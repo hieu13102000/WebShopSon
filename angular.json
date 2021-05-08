@@ -1,5 +1,8 @@
 {
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "cli": {
+    "analytics": "b3e1355d-0bdd-4de1-a0bd-f221f03024ce"
+  },
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
@@ -28,9 +31,27 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css"
+              "src/styles.css",
+
+              "src/assets/css/font-awesome.min.css",
+              "node_modules/bootstrap/dist/css/bootstrap.css",
+              "src/assets/css/style.css",
+              "src/assets/css/magnific-popup.css",
+              "src/assets/css/owl.carousel.css",
+              "node_modules/jquery-ui-1-11-4/jquery-ui.css"
+
+
             ],
-            "scripts": []
+            "scripts": [
+              "node_modules/jquery/dist/jquery.min.js",
+
+              "src/assets/js/owl.carousel.min.js",
+              "node_modules/bootstrap/dist/js/bootstrap.min.js",
+              "src/assets/js/jquery.magnific-popup.js",
+              "src/assets/js/jquery.firstVisitPopup.js",
+              "node_modules/jquery-ui-1-11-4/jquery-ui.js",
+              "src/assets/js/custom.js"
+            ]
           },
           "configurations": {
             "production": {
@@ -92,8 +113,11 @@
             ],
             "styles": [
               "src/styles.css"
+
             ],
-            "scripts": []
+            "scripts": [
+
+            ]
           }
         },
         "lint": {
