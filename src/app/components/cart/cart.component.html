@@ -1,0 +1,70 @@
+<div class="container">
+  <div class="row ">
+    <!-- =====  BANNER STRAT  ===== -->
+    <div class="col-sm-12">
+      <div class="breadcrumb ptb_20">
+        <h1>Giỏ hàng</h1>
+        <ul>
+          <li><a routerLink="">Trang chủ</a></li>
+          <li routerLink="cart">Giỏ hàng</li>
+        </ul>
+      </div>
+    </div>
+    <div class="row">
+      <aside class="col-lg-9">
+          <div class="card">
+              <div class="table-responsive">
+                  <table class="table table-borderless table-shopping-cart">
+                      <thead class="text-muted">
+                          <tr class="small text-uppercase">
+                              <th scope="col">Sản phẩm</th>
+                              <th scope="col" width="120">Số lượng</th>
+                              <th scope="col" width="120">Giá</th>
+                              <th scope="col" class="text-right d-none d-md-block" width="200"></th>
+                          </tr>
+                      </thead>
+                      <tbody>
+                          <tr  *ngFor="let item of items">
+                              <td>
+                                  <figure class="itemside align-items-center">
+                                      <div class="aside"><img src="{{item.product.img}}" class="img-sm"></div>
+                                      <figcaption class="info"> <a href="#" class="name" data-abc="true">{{item.product.name}}</a>
+                                          <p class="text-muted small">Màu: {{item.product.color}} <br> Thương hiệu : {{item.product.brand}}</p>
+                                      </figcaption>
+                                  </figure>
+                              </td>
+                              <td> <input type="text" class=" amount form-control quantity" size="1" value="{{item.amount}}" name="quantity"> </td>
+                              <td>
+                                  <div class="price-wrap"> <var class="price">{{item.product.price}}</var></div>
+                              </td>
+                              <td class="text-right d-none d-md-block"><a (click)="deleteCart(item.product._id)" class="btn btn-light" data-abc="true"> <i class="fa fa-times-circle"></i></a> </td>
+                          </tr>
+                      </tbody>
+                  </table>
+              </div>
+          </div>
+      </aside>
+      <aside class="col-lg-3">
+          <div class="card mb-3">
+              <div class="card-body">
+                  <form>
+                      <div class="form-group"> <label>Mã giảm giá ?</label>
+                          <div class="input-group"> <input type="text" class="form-control coupon" name="" placeholder="Coupon code"> <span class="input-group-append"> <button class="btn btn-primary btn-apply coupon">Áp dụng</button> </span> </div>
+                      </div>
+                  </form>
+              </div>
+          </div>
+          <div class="card">
+              <div class="card-body">
+
+                  <dl class="dlist-align">
+                      <dt>Tổng tiền :</dt>
+                      <dd class="text-right text-dark b ml-3"><strong>{{tongTien | currency: 'VND': 'symbol'}}</strong></dd>
+                  </dl>
+                  <hr> <a (click)="thanhToan()" class=" thanhtoan btn btn-out btn-primary btn-square btn-main" data-abc="true">Thanh toán</a> <a href="#" class="btn btn-out btn-success btn-square btn-main mt-2" data-abc="true">Tiếp tục mua sắm</a>
+              </div>
+          </div>
+      </aside>
+  </div>
+  </div>
+</div>

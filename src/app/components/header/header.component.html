@@ -1,23 +1,4 @@
-<div id="subscribe-me" class="modal animated fade in" role="dialog" data-keyboard="true" tabindex="-1">
-  <div class="newsletter-popup"> <img class="offer" src="../../../assets/images/sale-off.jpg" alt="offer">
-    <div class="newsletter-popup-static newsletter-popup-top">
-      <div class="popup-text">
-        <div class="popup-title">50% <span>off</span></div>
-        <div class="popup-desc">
-          <div>ĐĂNG KÝ VÀ ĐƯỢC GIẢM GIÁ 50% CHO ĐƠN HÀNG TIẾP THEO CỦA BẠN</div>
-        </div>
-      </div>
-      <form onsubmit="return  validatpopupemail();" method="post">
-        <div class="form-group required">
-          <input type="email" name="email-popup" id="email-popup" placeholder=" Nhập Email của bạn" class="form-control input-lg" required />
-          <button type="submit" class="btn btn-default btn-lg" id="email-popup-submit">Đăng ký</button>
-          <label class="checkme">
-            <input type="checkbox" value="" id="checkme" />Không hiển thị lại</label>
-        </div>
-      </form>
-    </div>
-  </div>
-</div>
+
 <!-- =====  HEADER START  ===== -->
 <header id="header">
   <div class="header-top">
@@ -30,7 +11,17 @@
         </div>
         <div class="col-xs-12 col-sm-8">
           <ul class="header-top-right text-right">
-            <li class="account"><a href="login.html"> Tài Khoản</a></li>
+           
+            <ng-container *ngIf="userAuth | async  as auth; else elseBlock">
+              <ng-container *ngIf="auth">
+            <li class="account"><a href="#" data-toggle="modal" data-target="#ModalLogOut"> Tài Khoản</a></li>
+          </ng-container>
+        </ng-container> 
+        <ng-template #elseBlock>
+          <li class="account"><a href="#" data-toggle="modal" data-target="#myModal"> Tài Khoản</a></li>
+      </ng-template>
+            <li> <app-login></app-login>
+          </li>
             <li class="language dropdown"> <span class="dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" role="button">Ngôn ngữ<span class="caret"></span> </span>
               <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
                 <li><a href="#">English</a></li>
@@ -53,69 +44,27 @@
       <div class="row">
         <div class="col-xs-12 col-sm-4">
           <div class="main-search mt_40">
-            <input id="search-input" name="search" value="" placeholder="Tìm kiếm" class="form-control input-lg" autocomplete="off" type="text">
+            <input id="search-input" name="search" value="" placeholder="Tìm kiếm" class="form-control input-lg" autocomplete="off" type="text"
+            data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample"
+            [(ngModel)]="name" (ngModelChange)="Search()" >
             <span class="input-group-btn">
           <button type="button" class="btn btn-default btn-lg"><i class="fa fa-search"></i></button>
           </span> </div>
+          <div class="collapse overflow-auto" id="collapseExample">
+            <div class="card card-body">
+              <div class="anyClass">
+                <div class="row" *ngFor="let d of dataSeach">
+                  <a [routerLink]="['/detail', d._id]"> &nbsp; {{d.name}}</a>
+                </div>
+              </div>
+              
+            </div>
+          </div>
         </div>
         <div class="navbar-header col-xs-6 col-sm-4"> <a class="navbar-brand" href="index.html"> <img alt="OYEENok" src="../../../assets/images/logo.png"> </a> </div>
         <div class="col-xs-6 col-sm-4 shopcart">
           <div id="cart" class="btn-group btn-block mtb_40">
-            <button type="button" class="btn" data-target="#cart-dropdown" data-toggle="collapse" aria-expanded="true"><span id="shippingcart">GIỎ HÀNG </span><span id="cart-total">SẢN PHẨM(0)</span> </button>
-          </div>
-          <div id="cart-dropdown" class="cart-menu collapse">
-            <ul>
-              <li>
-                <table class="table table-striped">
-                  <tbody>
-                    <tr>
-                      <td class="text-center"><a href="#"><img src="../../../assets/images/product/70x84.jpg" alt="iPod Classic" title="iPod Classic"></a></td>
-                      <td class="text-left product-name"><a href="#">MacBook Pro</a> <span class="text-left price">$20.00</span>
-                        <input class="cart-qty" name="product_quantity" min="1" value="1" type="number">
-                      </td>
-                      <td class="text-center"><a class="close-cart"><i class="fa fa-times-circle"></i></a></td>
-                    </tr>
-                    <tr>
-                      <td class="text-center"><a href="#"><img src="../../../assets/images/product/70x84.jpg" alt="iPod Classic" title="iPod Classic"></a></td>
-                      <td class="text-left product-name"><a href="#">MacBook Pro</a> <span class="text-left price">$20.00</span>
-                        <input class="cart-qty" name="product_quantity" min="1" value="1" type="number">
-                      </td>
-                      <td class="text-center"><a class="close-cart"><i class="fa fa-times-circle"></i></a></td>
-                    </tr>
-                  </tbody>
-                </table>
-              </li>
-              <li>
-                <table class="table">
-                  <tbody>
-                    <tr>
-                      <td class="text-right"><strong>Sub-Total</strong></td>
-                      <td class="text-right">$2,100.00</td>
-                    </tr>
-                    <tr>
-                      <td class="text-right"><strong>Eco Tax (-2.00)</strong></td>
-                      <td class="text-right">$2.00</td>
-                    </tr>
-                    <tr>
-                      <td class="text-right"><strong>VAT (20%)</strong></td>
-                      <td class="text-right">$20.00</td>
-                    </tr>
-                    <tr>
-                      <td class="text-right"><strong>Total</strong></td>
-                      <td class="text-right">$2,122.00</td>
-                    </tr>
-                  </tbody>
-                </table>
-              </li>
-              <li>
-                <form action="cart_page.html">
-                  <input class="btn pull-left mt_10" value="View cart" type="submit">
-                </form>
-                <form action="checkout_page.html">
-                  <input class="btn pull-right mt_10" value="Checkout" type="submit">
-                </form>
-              </li>
-            </ul>
+            <button type="button" class="btn" routerLink="cart" data-toggle="collapse" aria-expanded="true"><span id="shippingcart">GIỎ HÀNG </span><span id="cart-total">SẢN PHẨM</span> </button>
           </div>
         </div>
       </div>
@@ -125,20 +74,17 @@
         <div class="collapse navbar-collapse js-navbar-collapse">
           <ul id="menu" class="nav navbar-nav">
             <li> <a routerLink="">Trang chủ</a></li>
-            <li> <a routerLink="detailed-products">Hệ thống của hàng</a></li>
-            <li> <a routerLink = "products">Nghệ sĩ tin dùng</a></li>
-            <li class="dropdown mega-dropdown"> <a href="#" class="dropdown-toggle" data-toggle="dropdown">Sản phẩm</a>
+            <li> <a  >Hệ thống của hàng</a></li>
+            <li> <a  >Nghệ sĩ tin dùng</a></li>
+            <li class="dropdown mega-dropdown"> <a routerLink = "products"class="dropdown-toggle" data-toggle="dropdown">Sản phẩm</a>
               <ul class="dropdown-menu mega-dropdown-menu row">
                 <li class="col-md-3">
                   <ul>
                     <li class="dropdown-header">Thương hiệu</li>
-                    <li><a href="#">Chanel</a></li>
-                    <li><a href="#">Gucci</a></li>
-                    <li><a href="#">Charlotte Tilbury</a></li>
-                    <li><a href="#">Dior</a></li>
-                    <li><a href="#">Clinique</a></li>
-                    <li><a href="#">Hermes</a></li>
-                    <li><a href="#">Givenchy</a></li>
+                    <li><a href="/products/Chanel">Chanel</a></li>
+                    <li><a href="/products/Gucci">Gucci</a></li>
+                    <li><a href="/products/Dior">Dior</a></li>
+                    <li><a href="/products/YSl">YSl</a></li>
                   </ul>
                 </li>
                 <li class="col-md-3">
@@ -155,7 +101,7 @@
                 <li class="col-md-3">
                   <ul>
                     <li class="dropdown-header">Màu son</li>
-                    <li><a href="#">Đỏ</a></li>
+                    <li><a href="/products/Hồng cam">Hồng</a></li>
                     <li><a href="#">Tím</a></li>
                     <li><a href="#">Cam</a></li>
                     <li><a href="#">Đỏ hồng</a></li>
@@ -182,7 +128,7 @@
                 </li>
               </ul>
             </li>
-            <li> <a href="blog_page.html">Tin tức</a></li>
+            <li> <a routerLink="cart">Tin tức</a></li>
             <li> <a href="about.html">Khuyến mãi</a></li>
             <li class="dropdown"> <a href="#" class="dropdown-toggle" data-toggle="dropdown">Liên hệ</a>
             </li>

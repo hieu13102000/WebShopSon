@@ -1,13 +1,16 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { DetailedProductsComponent } from './front-end/detailed-products/detailed-products.component';
-import { ProductsComponent } from './front-end/products/products.component';
-import { TopProductComponent } from './front-end/top-product/top-product.component';
+import { CartComponent } from './components/cart/cart.component';
+import { DetailedProductsComponent } from './components/detailed-products/detailed-products.component';
+import { ProductsComponent } from './components/products/products.component';
+import { TopProductComponent } from './components/top-product/top-product.component';
 
 const routes: Routes = [
   {path: '',component:TopProductComponent},
   {path:'products',component:ProductsComponent},
-  {path:'detailed-products',component:DetailedProductsComponent}
+  {path:'products/:cat',component:ProductsComponent},
+  {path:'detail/:_id',component:DetailedProductsComponent},
+  {path:'cart',component:CartComponent},
 ];
 
 @NgModule({
