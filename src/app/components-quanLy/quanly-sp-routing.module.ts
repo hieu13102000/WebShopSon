@@ -10,16 +10,14 @@ import { ProductListComponent } from './pages/product-list/product-list.componen
 import { UserListComponent } from './pages/user-list/user-list.component';
 
 const routes: Routes = [
-  {path: 'admin', component: LoginComponent,},
-  {path: 'admin/login', component: LoginComponent},
-  {path: 'admin',
+  {path: 'login', component: LoginComponent,},
+  {path: '',
   component:LayoutComponent,
     children: [
-      // { path: 'login', component: LoginComponent},
       { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard]},
       { path: 'productList', component: ProductListComponent, canActivate: [AuthGuard]},
       { path: 'add-product', component: AddProductComponent, canActivate: [AuthGuard]},
-      { path: 'productDetails/:_id', component: ProductDetailsComponent, canActivate: [AuthGuard]},
+      { path: 'productDetails/:_id', component: ProductDetailsComponent},
       { path: 'userList', component: UserListComponent, canActivate: [AuthGuard]},
     ]},
 ];

@@ -20,7 +20,7 @@ export class LoginComponent implements OnInit {
       if(!isLoggin){
         alert('Sai mật khẩu hoặc bạn không có quyền truy cập')
       }else{
-        this.router.navigate(['/admin/dashboard'])
+        this.router.navigate(['/dashboard'])
       }
     });
   }

@@ -1,6 +1,6 @@
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
-import { ProductService } from '../../services/product.service';
+import { ProductService } from '../../../services/product.service';
 import { Component, OnInit } from '@angular/core';
 import {map, switchMap} from 'rxjs/operators'
 import { product } from 'src/app/models/product.model';
