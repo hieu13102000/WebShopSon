@@ -42,8 +42,8 @@ export class CartComponent implements OnInit {
       return new Promise((reslove, reject) =>{
         let tong = 0
         this.items.forEach((cart: Cart) =>{
-          let donGia = parseInt (cart.product.price.split('.').join('').replace('₫', ''))
-          tong += donGia * cart.amount
+          // let donGia = parseInt (cart.product.price.split('.').join('').replace('₫', ''))
+          // tong += donGia * cart.amount
         })
 
         reslove(tong)

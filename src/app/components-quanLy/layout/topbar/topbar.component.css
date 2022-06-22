@@ -1,0 +1,14 @@
+.sidebar-light .sidebar-brand {
+    color: #fafafa;
+    background-color: #4c60da !important;
+}
+.sidebar .sidebar-brand {
+    height: 4.375rem;
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: 800;
+    padding: 1.5rem 1rem;
+    text-align: center;
+    letter-spacing: .05rem;
+    z-index: 1;
+}

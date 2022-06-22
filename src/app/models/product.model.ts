@@ -1,12 +1,12 @@
 export class product{
-  _id= "";
-  name="";
-  price= "";
-  old_price= "";
-  discount= "";
-  gender="";
-  color= "";
-  made_in="";
-  brand="";
-  img="";
+  _id?: any;
+  name?: string;
+  price?: number;
+  old_price?: number;
+  discount?: string;
+  gender?: string;
+  color?: string;
+  made_in?: string;
+  brand?: string;
+  img?: string;
 }

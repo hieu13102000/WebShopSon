@@ -14,9 +14,10 @@ import{HttpClientModule} from '@angular/common/http';
 import {NgxPaginationModule} from 'ngx-pagination';
 import { CartComponent } from './components/cart/cart.component';
 import { LoginComponent } from './components/login/login.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule} from '@angular/forms';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { Ng2OrderModule } from 'ng2-order-pipe';
+import { QuanlySpModule } from './components-quanLy/quanly-sp.module';
 @NgModule({
   declarations: [
     AppComponent,
@@ -39,7 +40,7 @@ import { Ng2OrderModule } from 'ng2-order-pipe';
     FormsModule,
     Ng2SearchPipeModule,
     Ng2OrderModule,
-    
+    QuanlySpModule
   ],
   providers: [],
   bootstrap: [AppComponent]
