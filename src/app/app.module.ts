@@ -15,7 +15,7 @@ import { SanphamModule } from './components/sanpham.module';
     AppRoutingModule,
     HttpClientModule,
     SanphamModule,
-    QuanlySpModule
+    QuanlySpModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
