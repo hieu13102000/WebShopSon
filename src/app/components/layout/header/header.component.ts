@@ -18,19 +18,19 @@ export class HeaderComponent implements OnInit {
   constructor(private prod: ProductService, private router: Router, private authService: AuthService) { }
 
   ngOnInit(): void {
-    this.prod.getAllProduct().subscribe((dataSeach: any) =>{
+    this.prod.getAllProduct().subscribe((dataSeach: any) => {
       this.dataSeach = dataSeach
     })
     this.userAuth = this.authService.getUserAuth()
   }
   Search() {
-    if(this.name ==""){
+    if (this.name == "") {
       this.ngOnInit();
-    }else{
-      this.dataSeach = this.dataSeach.filter(res =>{
+    } else {
+      this.dataSeach = this.dataSeach.filter(res => {
         return res.name?.toLocaleLowerCase().match(this.name.toLocaleLowerCase());
       });
     }
   }
-  
+
 }

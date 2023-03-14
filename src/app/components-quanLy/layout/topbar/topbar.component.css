@@ -12,3 +12,7 @@
     letter-spacing: .05rem;
     z-index: 1;
 }
+.bg-navbar {
+    background-color: #6777ef !important;
+    height: 70px;
+}

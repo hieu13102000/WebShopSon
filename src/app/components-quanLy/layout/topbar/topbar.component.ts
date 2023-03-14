@@ -12,13 +12,13 @@ import { UserService } from 'src/app/services/user.service';
 })
 export class TopbarComponent implements OnInit {
   userAuth!: Observable<User | null>
-  constructor(private userService: UserService, private authService: AuthService,private router: Router) { }
+  constructor(private userService: UserService, private authService: AuthService, private router: Router) { }
 
   ngOnInit(): void {
     this.userAuth = this.authService.getUserAuth()
   }
 
-  logout(){
+  logout() {
     this.userService.logout()
   }
 }

@@ -3,9 +3,10 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import{HttpClientModule} from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { QuanlySpModule } from './components-quanLy/quanly-sp.module';
 import { SanphamModule } from './components/sanpham.module';
+import { ApiPrefixInterceptor } from './core/interceptors/api-prefix.interceptor';
 @NgModule({
   declarations: [
     AppComponent,
@@ -17,7 +18,13 @@ import { SanphamModule } from './components/sanpham.module';
     SanphamModule,
     QuanlySpModule,
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: ApiPrefixInterceptor,
+      multi: true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

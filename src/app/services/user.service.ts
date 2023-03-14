@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
 import { map, take } from 'rxjs/operators'
 import { User } from '../models/user.model';
 import { AuthService } from './auth.service';
@@ -11,24 +10,24 @@ import { AuthService } from './auth.service';
 export class UserService {
 
   constructor(private http: HttpClient, private authService: AuthService) { }
-  baseUrl = 'https://61455ce638339400175fc5b0.mockapi.io/auth';
-  getAll(): Observable<User[]> {
-    return this.http.get<User[]>(this.baseUrl).pipe();
+
+  getAll() {
+    return this.http.get<User[]>('/product');
   }
-  get(id: any): Observable<User> {
-    return this.http.get<User>(`${this.baseUrl}/${id}`);
+  get(id: any) {
+    return this.http.get<User[]>(`/product/${id}`);
   }
 
-  create(data: any): Observable<any> {
-    return this.http.post(this.baseUrl, data);
+  create(data: any) {
+    return this.http.post('/product', data);
   }
 
-  update(id: any, data: any): Observable<any> {
-    return this.http.put(`${this.baseUrl}/${id}`, data);
+  update(id: any, data: any) {
+    return this.http.put(`/product/${id}`, data);
   }
   login(username: string, password: string) {
     return new Promise<boolean>((reslove, reject) => {
-      this.http.get<User[]>(this.baseUrl).pipe(
+      this.http.get<User[]>('/auth').pipe(
         map(user => user.filter((val: User) => {
           return val.email === username && val.password === password
         })),
@@ -40,7 +39,7 @@ export class UserService {
           reslove(true)
         } else {
           this.authService.setUserAuth(null)
-          reslove(false) 
+          reslove(false)
         }
       })
     })

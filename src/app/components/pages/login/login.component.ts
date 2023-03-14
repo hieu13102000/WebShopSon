@@ -18,8 +18,8 @@ export class LoginComponent implements OnInit {
   submitted = false;
   email: string = ''
   password: string = ''
-  @ViewChild('closebutton') closebutton :any;
-  constructor(private userService: UserService,private authService: AuthService) { }
+  @ViewChild('closebutton') closebutton: any;
+  constructor(private userService: UserService, private authService: AuthService) { }
   userAuth!: Observable<User | null>
   ngOnInit(): void {
     this.userAuth = this.authService.getUserAuth()
@@ -42,17 +42,17 @@ export class LoginComponent implements OnInit {
           console.log(error);
         });
   }
-  handleSubmit(email: string, password: string){
-    this.userService.login(email, password).then(isLoggin =>{
-      if(!isLoggin){
+  handleSubmit(email: string, password: string) {
+    this.userService.login(email, password).then(isLoggin => {
+      if (!isLoggin) {
         alert('Sai mật khẩu')
-      }else{
+      } else {
         this.closebutton.nativeElement.click();
         alert('Đăng nhập thành công')
       }
     });
   }
-  logout(){
+  logout() {
     this.userService.logout()
   }
 }

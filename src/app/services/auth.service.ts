@@ -6,32 +6,32 @@ import { User } from '../models/user.model';
   providedIn: 'root'
 })
 export class AuthService {
-  private userAuth = new BehaviorSubject<null| User>(null)
-  
+  private userAuth = new BehaviorSubject<null | User>(null)
 
-  getUserAuth(): Observable<User | null>{
+
+  getUserAuth(): Observable<User | null> {
     return this.userAuth.asObservable()
   }
-  setUserAuth(user: User | null): void{
+  setUserAuth(user: User | null): void {
     this.userAuth.next(user)
     this.saveUserToLocalStorage()
   }
-  getAuth(){
+  getAuth() {
     return this.userAuth.value
   }
 
-  saveUserToLocalStorage(){
-    if(this.userAuth.value){
+  saveUserToLocalStorage() {
+    if (this.userAuth.value) {
       localStorage.setItem('currentUser', JSON.stringify(this.userAuth.value))
-    }else{
+    } else {
       localStorage.removeItem('currentUser')
     }
   }
 
 
-  constructor() { 
-    const userAsString =  localStorage.getItem('currentUser')
-    if(userAsString){
+  constructor() {
+    const userAsString = localStorage.getItem('currentUser')
+    if (userAsString) {
       const mapToUser = JSON.parse(userAsString) as User
       this.setUserAuth(mapToUser)
     }

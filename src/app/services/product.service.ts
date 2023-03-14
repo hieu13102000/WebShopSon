@@ -7,32 +7,29 @@ import { product } from '../models/product.model';
   providedIn: 'root'
 })
 export class ProductService {
-  httpOptions = {
-    headers: new HttpHeaders({'Content-Type': 'Application/json'})
-  };
-  apiUrl = 'https://61455ce638339400175fc5b0.mockapi.io/product';
 
   constructor(private http: HttpClient) { }
 
-  getAllProduct(): Observable<product[]>{
-    return this.http.get<product[]>(this.apiUrl).pipe();
-  }
-  get(_id: any): Observable<product> {
-    return this.http.get<product>(`${this.apiUrl}/${_id}`);
+  public getAllProduct() {
+    return this.http.get('/product');
   }
 
-  create(data: any): Observable<any> {
-    return this.http.post(this.apiUrl, data);
+  public get(_id: any) {
+    return this.http.get(`/product/${_id}`);
   }
 
-  update(_id: any, data: any): Observable<any> {
-    return this.http.put(`${this.apiUrl}/${_id}`, data);
+  create(data: any) {
+    return this.http.post('/product', data);
   }
 
-  delete(_id: any): Observable<any> {
-    return this.http.delete(`${this.apiUrl}/${_id}`);
+  update(_id: any, data: any) {
+    return this.http.put(`/product/${_id}`, data);
   }
-  searchProduct(_id: string){
-    return this.http.get<product>(`${this.apiUrl}/${_id}`).pipe()
+
+  delete(_id: any) {
+    return this.http.delete(`/product/${_id}`);
+  }
+  searchProduct(_id: string) {
+    return this.http.get<product>(`/product/${_id}`).pipe()
   }
 }
