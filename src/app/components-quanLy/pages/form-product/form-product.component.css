@@ -24,3 +24,28 @@ body{
   background-size: 5px 5px;
   background-repeat: no-repeat;
   } */
+  .custom-file-upload input[type="file"] {
+    display: none;
+}
+
+.custom-file-upload {
+    display: inline-block;
+    position: relative;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: bold;
+    color: #fff;
+    background-color: #007bff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    text-align: center;
+}
+
+.custom-file-upload:hover {
+    background-color: #0069d9;
+}
+
+.custom-file-upload:active {
+    top: 1px;
+}

@@ -9,7 +9,7 @@ import { ProductListComponent } from './pages/product-list/product-list.componen
 import { UserListComponent } from './pages/user-list/user-list.component';
 
 const routes: Routes = [
-  { path: 'login-admin', component: LoginComponent, },
+  { path: 'login', component: LoginComponent, },
   {
     path: '',
     component: LayoutComponent,

@@ -10,6 +10,8 @@ import {
   FormGroup,
   Validators
 } from '@angular/forms';
+import { FileUploadService } from 'src/app/services/file-upload.service';
+import { Subject } from 'rxjs';
 
 @Component({
   selector: 'app-form-product',
@@ -41,10 +43,13 @@ export class FormProductComponent implements OnInit {
   };
 
   locate: string | undefined;
+  uploadProgress$ = new Subject<{ url: string, progress: number }>();
+  percentage = 0;
 
   constructor(
-    private formBuilder: FormBuilder,
+    private uploadService: FileUploadService,
     private productService: ProductService,
+    private formBuilder: FormBuilder,
     private route: ActivatedRoute,
     private router: Router) {
     this.form = this.formBuilder.group(
@@ -61,7 +66,7 @@ export class FormProductComponent implements OnInit {
         color: ['', Validators.required],
         made_in: ['', Validators.required],
         brand: ['', Validators.required],
-        img: ['https://drive.google.com/file/d/1Tv9NL7Jf930WkrMERn05uXYPg4U2yEUo/view?usp=sharing', Validators.required],
+        img: ['https://firebasestorage.googleapis.com/v0/b/webshop-a5ab0.appspot.com/o/images%2Fadd.png?alt=media&token=2b827392-47de-4ef8-84a8-1a980c6c4870', Validators.required],
       },
     );
   }
@@ -88,6 +93,7 @@ export class FormProductComponent implements OnInit {
     return this.form.controls;
   }
 
+  /* `onSubmit` is a function that is used to submit the form. */
   onSubmit(): void {
     this.submitted = true;
     //  Điều kiện check nếu tất cả giá trị hợp lệ thì thêm sp
@@ -97,6 +103,7 @@ export class FormProductComponent implements OnInit {
     this.locate !== undefined ? this.updateProduct() : this.createProduct()
   }
 
+  /* `createProduct` is a function that is used to create a product. */
   createProduct() {
     this.productService.create(this.form.value)
       .subscribe(
@@ -117,6 +124,7 @@ export class FormProductComponent implements OnInit {
         });
   }
 
+  /* `updateProduct` is a function that is used to update a product. */
   updateProduct() {
     this.submitted = true;
     //  Điều kiện check nếu tất cả giá trị hợp lệ thì thêm sp
@@ -148,7 +156,7 @@ export class FormProductComponent implements OnInit {
     })
   }
 
-
+  /* `deleteProduct()` is a function that is used to delete a product. */
   deleteProduct(): void {
     Swal.fire({
       title: 'Bạn có chắc không?',
@@ -178,5 +186,31 @@ export class FormProductComponent implements OnInit {
             });
       }
     })
+  }
+
+  onFileSelected(event: Event): void {
+    const inputElement = event.target as HTMLInputElement;
+    const file = inputElement.files?.[0];
+    if (file) {
+      this.uploadService.uploadImage(file).subscribe(progress => {
+        this.uploadProgress$.next(progress);
+        if (progress.progress === 100 && progress.url) {
+          console.log(`Upload completed. URL: ${progress.url}`);
+          // this.urlImage = progress.url;
+          this.form.patchValue({
+            img: progress.url
+          });
+        }
+        if (progress.progress < 100 || (progress.progress === 100 && progress.url)) {
+          this.percentage = Math.round(progress.progress ?? 0);
+          console.log(`progress.progress: ${progress.progress}`);
+          if (progress.progress === 100) {
+            setTimeout(() => {
+              this.percentage = 0
+            }, 1000);
+          }
+        }
+      });
+    }
   }
 }

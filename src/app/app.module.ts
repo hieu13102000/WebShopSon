@@ -7,6 +7,9 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { QuanlySpModule } from './components-quanLy/quanly-sp.module';
 import { SanphamModule } from './components/sanpham.module';
 import { ApiPrefixInterceptor } from './core/interceptors/api-prefix.interceptor';
+
+import { environment } from 'src/environments/environment';
+import { AngularFireModule } from '@angular/fire';
 @NgModule({
   declarations: [
     AppComponent,
@@ -17,6 +20,7 @@ import { ApiPrefixInterceptor } from './core/interceptors/api-prefix.interceptor
     HttpClientModule,
     SanphamModule,
     QuanlySpModule,
+    AngularFireModule.initializeApp(environment.firebase),
   ],
   providers: [
     {

@@ -4,7 +4,15 @@
 
 export const environment = {
   production: false,
-  apiPrefixUrl: 'https://61455ce638339400175fc5b0.mockapi.io'
+  apiPrefixUrl: 'https://61455ce638339400175fc5b0.mockapi.io',
+  firebase: {
+    apiKey: "AIzaSyD8_w1z1bcvF7i-8iFx1tvPC7mkflobsyU",
+    authDomain: "webshop-a5ab0.firebaseapp.com",
+    projectId: "webshop-a5ab0",
+    storageBucket: "webshop-a5ab0.appspot.com",
+    messagingSenderId: "720332784353",
+    appId: "1:720332784353:web:8652c5f318d365a93a6da0"
+  },
 };
 
 /*
