@@ -12,18 +12,18 @@ export class UserService {
   constructor(private http: HttpClient, private authService: AuthService) { }
 
   getAll() {
-    return this.http.get<User[]>('/product');
+    return this.http.get<User[]>('/auth');
   }
   get(id: any) {
-    return this.http.get<User[]>(`/product/${id}`);
+    return this.http.get<User[]>(`/auth/${id}`);
   }
 
   create(data: any) {
-    return this.http.post('/product', data);
+    return this.http.post('/auth', data);
   }
 
   update(id: any, data: any) {
-    return this.http.put(`/product/${id}`, data);
+    return this.http.put(`/auth/${id}`, data);
   }
   login(username: string, password: string) {
     return new Promise<boolean>((reslove, reject) => {

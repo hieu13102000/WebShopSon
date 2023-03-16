@@ -19,7 +19,6 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { FormProductComponent } from './pages/form-product/form-product.component';
 import { CssJsAdminDirective } from '../core/directive/css_js-admin.directive';
 import { OnlyNumberDirective } from '../core/directive/only-number.directive';
-
 @NgModule({
   declarations: [
     FooterComponent,
@@ -43,7 +42,7 @@ import { OnlyNumberDirective } from '../core/directive/only-number.directive';
     Ng2OrderModule,
     QuanlySpRoutingModule,
     BrowserAnimationsModule,
-    MatSidenavModule
+    MatSidenavModule,
   ],
   providers: [
     DecimalPipe // add DecimalPipe to providers
