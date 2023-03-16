@@ -1,6 +1,7 @@
 <div class="container">
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-        <h1 class="h3 mb-0 text-gray-800">Thêm sản phẩm</h1>
+        <h1 *ngIf="locate !== undefined" class="h3 mb-0 text-gray-800">Sửa sản phẩm</h1>
+        <h1 *ngIf="locate === undefined" class="h3 mb-0 text-gray-800">Thêm sản phẩm</h1>
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="./">Nhà</a></li>
             <li class="breadcrumb-item active" aria-current="page">Thêm sản phẩm</li>
@@ -123,10 +124,10 @@
                                 <div class="col-sm-9 text-secondary">
                                     <input type="text" class="form-control" placeholder="Nhập giá sản phẩm" id="price"
                                         name="price" formControlName="price"
-                                        [ngClass]="{ 'is-invalid': submitted && f.price.errors }">
+                                        [ngClass]="{ 'is-invalid': submitted && f.price.errors }" numbersOnly>
                                     <div *ngIf="submitted && f.price.errors" class="invalid-feedback">
                                         <div *ngIf="f.price.errors.required">Vui lòng nhập giá sản phẩm</div>
-                                        <div *ngIf="f.price.errors.pattern"> giá sản phẩm phải là số</div>
+                                        <!-- <div *ngIf="f.price.errors.pattern"> giá sản phẩm phải là số</div> -->
                                     </div>
                                 </div>
                             </div>
@@ -137,10 +138,10 @@
                                 <div class="col-sm-9 text-secondary">
                                     <input type="text" class="form-control" placeholder="Nhập sản phẩm giảm giá"
                                         id="old_price" name="old_price" formControlName="old_price"
-                                        [ngClass]="{ 'is-invalid': submitted && f.old_price.errors }">
+                                        [ngClass]="{ 'is-invalid': submitted && f.old_price.errors }" numbersOnly>
                                     <div *ngIf="submitted && f.old_price.errors" class="invalid-feedback">
                                         <div *ngIf="f.old_price.errors.required">Vui lòng nhập giá giảm sản phẩm</div>
-                                        <div *ngIf="f.old_price.errors.pattern"> giá sản phẩm giảm giá phải là số</div>
+                                        <!-- <div *ngIf="f.old_price.errors.pattern"> giá sản phẩm giảm giá phải là số</div> -->
                                     </div>
                                 </div>
                             </div>
@@ -151,7 +152,7 @@
                                         {{locate !== undefined ? "Cập nhật": "Lưu"}}
                                     </button>
                                 </div>
-                                <div class="col-sm-6 text-secondary">
+                                <div *ngIf="locate !== undefined" class="col-sm-6 text-secondary">
                                     <button type="button" class="btn btn-danger mb-1" (click)="deleteProduct()">
                                         Xoá
                                     </button>

@@ -1,23 +1,23 @@
-<body id="page-top">
-    <div id="wrapper">
-      <!-- Sidebar -->
-          <app-header></app-header>
-          <div id="content-wrapper" class="d-flex flex-column">
-            <div id="content">
-              <app-topbar></app-topbar>
-              <router-outlet ></router-outlet>
-              <app-footer></app-footer>
-            </div>
-          </div>
-       <!-- Scroll to top -->
+<body id="page-top" css-js-admin>
+  <div id="wrapper">
+    <!-- Sidebar -->
+    <app-header></app-header>
+    <div id="content-wrapper" class="d-flex flex-column">
+      <div id="content">
+        <app-topbar></app-topbar>
+        <router-outlet></router-outlet>
+        <app-footer></app-footer>
+      </div>
+    </div>
+    <!-- Scroll to top -->
     <a class="scroll-to-top rounded" href="#page-top">
       <i class="fas fa-angle-up"></i>
     </a>
   </div>
-  </body>
+</body>
 
 
-  <!-- <mat-sidenav-container class="example-container">
+<!-- <mat-sidenav-container class="example-container">
     <mat-sidenav #sidenav mode="side" opened class="example-sidenav"> 
       <app-header></app-header>
     </mat-sidenav>

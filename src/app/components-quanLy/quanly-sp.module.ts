@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
+import { DecimalPipe } from '@angular/common';
 import { QuanlySpRoutingModule } from './quanly-sp-routing.module';
 import { FooterComponent } from './layout/footer/footer.component';
 import { LayoutComponent } from './layout/layout.component';
@@ -17,6 +17,8 @@ import { Ng2OrderModule } from 'ng2-order-pipe';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { FormProductComponent } from './pages/form-product/form-product.component';
+import { CssJsAdminDirective } from '../core/directive/css_js-admin.directive';
+import { OnlyNumberDirective } from '../core/directive/only-number.directive';
 
 @NgModule({
   declarations: [
@@ -28,7 +30,9 @@ import { FormProductComponent } from './pages/form-product/form-product.componen
     LoginComponent,
     ProductListComponent,
     UserListComponent,
-    FormProductComponent
+    FormProductComponent,
+    CssJsAdminDirective,
+    OnlyNumberDirective,
   ],
   imports: [
     CommonModule,
@@ -40,6 +44,9 @@ import { FormProductComponent } from './pages/form-product/form-product.componen
     QuanlySpRoutingModule,
     BrowserAnimationsModule,
     MatSidenavModule
+  ],
+  providers: [
+    DecimalPipe // add DecimalPipe to providers
   ],
   exports: [
     // FooterComponent  //Export để sử dụng được ở Module khác

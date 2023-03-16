@@ -57,11 +57,11 @@ export class FormProductComponent implements OnInit {
         name: ['', Validators.required],
         price: ['', [
           Validators.required,
-          Validators.pattern(/^-?(0|[1-9]\d*)?$/)
+          // Validators.pattern(/^-?(0|[1-9]\d*)?$/)
         ]],
         old_price: ['', [
           Validators.required,
-          Validators.pattern(/^-?(0|[1-9]\d*)?$/)
+          // Validators.pattern(/^-?(0|[1-9]\d*)?$/)
         ]],
         color: ['', Validators.required],
         made_in: ['', Validators.required],
@@ -105,6 +105,10 @@ export class FormProductComponent implements OnInit {
 
   /* `createProduct` is a function that is used to create a product. */
   createProduct() {
+    const old_price = this.form.controls['old_price'].value
+    const price = this.form.controls['price'].value
+    this.form.controls.old_price.patchValue(this.formatNumber(old_price))
+    this.form.controls.old_price.patchValue(this.formatNumber(price))
     this.productService.create(this.form.value)
       .subscribe(
         response => {
@@ -142,6 +146,10 @@ export class FormProductComponent implements OnInit {
       /* Read more about isConfirmed, isDenied below */
       if (result.isConfirmed) {
         Swal.fire('Đã lưu!', '', 'success')
+        const old_price = this.form.controls['old_price'].value
+        const price = this.form.controls['price'].value
+        this.form.controls.old_price.patchValue(this.formatNumber(old_price))
+        this.form.controls.old_price.patchValue(this.formatNumber(price))
         this.productService.update(this.currentProduct._id, this.form.value)
           .subscribe(
             response => {
@@ -213,4 +221,9 @@ export class FormProductComponent implements OnInit {
       });
     }
   }
+
+  formatNumber(value: string) {
+    return parseFloat(value.replace(/,/g, ''));
+  }
+
 }

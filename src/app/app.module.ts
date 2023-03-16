@@ -10,6 +10,7 @@ import { ApiPrefixInterceptor } from './core/interceptors/api-prefix.interceptor
 
 import { environment } from 'src/environments/environment';
 import { AngularFireModule } from '@angular/fire';
+import { CommonModule } from '@angular/common';
 @NgModule({
   declarations: [
     AppComponent,
@@ -18,6 +19,7 @@ import { AngularFireModule } from '@angular/fire';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
+    CommonModule,
     SanphamModule,
     QuanlySpModule,
     AngularFireModule.initializeApp(environment.firebase),

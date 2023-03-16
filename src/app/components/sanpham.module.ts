@@ -17,10 +17,12 @@ import { NgxPaginationModule } from 'ngx-pagination';
 import { LayoutComponent } from './layout/layout.component';
 import { FooterComponent } from './layout/footer/footer.component';
 import { HeaderComponent } from './layout/header/header.component';
+import { CssJsUserDirective } from '../core/directive/css_js-user.directive';
 
 
 @NgModule({
   declarations: [
+    CssJsUserDirective,
     HeaderComponent,
     FooterComponent,
     SlidesComponent,
