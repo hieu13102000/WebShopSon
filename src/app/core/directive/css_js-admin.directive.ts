@@ -18,7 +18,6 @@ export class CssJsAdminDirective {
       document.getElementsByTagName('head')[0].appendChild(node);
     }
     const dynamicScripts = [
-      '../../../assets/vendor/jquery/jquery.min.js',
       '../../../assets/vendor/bootstrap/js/bootstrap.js',
       '../../../assets/vendor/jquery-easing/jquery.easing.min.js',
       '../../../assets/js/ruang-admin.min.js',

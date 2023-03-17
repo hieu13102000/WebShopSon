@@ -31,7 +31,9 @@
               "src/assets"
             ],
             "styles": [],
-            "scripts": []
+            "scripts": [
+              "src/assets/vendor/jquery/jquery.min.js"
+            ]
           },
           "configurations": {
             "production": {
