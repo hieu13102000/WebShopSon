@@ -1,4 +1,4 @@
-.my-pagination /deep/ .ngx-pagination .current {
+.my-pagination ::ng-deep .ngx-pagination .current {
   background: #e40001 none repeat scroll 0 0;
   color: #fff;
   display: inline-block;
