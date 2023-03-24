@@ -11,6 +11,7 @@ import { ApiPrefixInterceptor } from './core/interceptors/api-prefix.interceptor
 import { environment } from 'src/environments/environment';
 import { AngularFireModule } from '@angular/fire';
 import { CommonModule } from '@angular/common';
+import { AngularFireStorageModule } from '@angular/fire/storage';
 @NgModule({
   declarations: [
     AppComponent,
@@ -20,9 +21,10 @@ import { CommonModule } from '@angular/common';
     AppRoutingModule,
     HttpClientModule,
     CommonModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireStorageModule,
     SanphamModule,
     QuanlySpModule,
-    AngularFireModule.initializeApp(environment.firebase),
   ],
   providers: [
     {
