@@ -18,6 +18,7 @@ import { LayoutComponent } from './layout/layout.component';
 import { FooterComponent } from './layout/footer/footer.component';
 import { HeaderComponent } from './layout/header/header.component';
 import { CssJsUserDirective } from '../core/directive/css_js-user.directive';
+import { SharedModule } from "../shared/shared.module";
 
 
 @NgModule({
@@ -32,7 +33,7 @@ import { CssJsUserDirective } from '../core/directive/css_js-user.directive';
     TopProductComponent,
     CartComponent,
     LoginComponent,
-    LayoutComponent
+    LayoutComponent,
   ],
   imports: [
     CommonModule,
@@ -40,7 +41,8 @@ import { CssJsUserDirective } from '../core/directive/css_js-user.directive';
     FormsModule,
     Ng2SearchPipeModule,
     Ng2OrderModule,
-    SanphamRoutingModule
+    SanphamRoutingModule,
+    SharedModule
   ]
 })
 export class SanphamModule { }

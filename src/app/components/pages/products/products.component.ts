@@ -4,6 +4,7 @@ import { ProductService } from '../../../services/product.service';
 import { Component, OnInit } from '@angular/core';
 import { map, switchMap } from 'rxjs/operators'
 import { product } from 'src/app/models/product.model';
+import { LoadingService } from 'src/app/core/services/loading.service';
 @Component({
   selector: 'app-products',
   templateUrl: './products.component.html',
@@ -17,11 +18,13 @@ export class ProductsComponent implements OnInit {
   p: any;
   product: any;
 
-  constructor(private prod: ProductService, private route: ActivatedRoute
+  constructor(private prod: ProductService,
+    private route: ActivatedRoute,
+    private loadingService: LoadingService
   ) { }
 
   ngOnInit(): void {
-
+    this.loadingService.show();
     this.route.paramMap.pipe(
       map(cat => cat.get('cat'))
     ).subscribe(catID => {
@@ -37,6 +40,7 @@ export class ProductsComponent implements OnInit {
           this.data = data
         })
       }
+      this.loadingService.hide();
     })
   }
   Search() {
