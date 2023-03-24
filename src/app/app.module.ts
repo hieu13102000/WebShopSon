@@ -9,9 +9,9 @@ import { SanphamModule } from './components/sanpham.module';
 import { ApiPrefixInterceptor } from './core/interceptors/api-prefix.interceptor';
 
 import { environment } from 'src/environments/environment';
-import { AngularFireModule } from '@angular/fire';
+import { AngularFireModule } from '@angular/fire/compat';
 import { CommonModule } from '@angular/common';
-import { AngularFireStorageModule } from '@angular/fire/storage';
+import { AngularFireStorageModule } from '@angular/fire/compat/storage';
 @NgModule({
   declarations: [
     AppComponent,

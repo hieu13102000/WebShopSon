@@ -5,9 +5,9 @@ import { ProductService } from 'src/app/services/product.service';
 import Swal from 'sweetalert2';
 import {
   AbstractControl,
-  FormBuilder,
-  FormControl,
-  FormGroup,
+  UntypedFormBuilder,
+  UntypedFormControl,
+  UntypedFormGroup,
   Validators
 } from '@angular/forms';
 import { FileUploadService } from 'src/app/services/file-upload.service';
@@ -19,14 +19,14 @@ import { Subject } from 'rxjs';
   styleUrls: ['./form-product.component.css']
 })
 export class FormProductComponent implements OnInit {
-  form: FormGroup = new FormGroup({
-    name: new FormControl(''),
-    price: new FormControl(''),
-    old_price: new FormControl(''),
-    color: new FormControl(''),
-    made_in: new FormControl(''),
-    brand: new FormControl(''),
-    img: new FormControl(''),
+  form: UntypedFormGroup = new UntypedFormGroup({
+    name: new UntypedFormControl(''),
+    price: new UntypedFormControl(''),
+    old_price: new UntypedFormControl(''),
+    color: new UntypedFormControl(''),
+    made_in: new UntypedFormControl(''),
+    brand: new UntypedFormControl(''),
+    img: new UntypedFormControl(''),
   });
   submitted = false;
 
@@ -49,7 +49,7 @@ export class FormProductComponent implements OnInit {
   constructor(
     private uploadService: FileUploadService,
     private productService: ProductService,
-    private formBuilder: FormBuilder,
+    private formBuilder: UntypedFormBuilder,
     private route: ActivatedRoute,
     private router: Router) {
     this.form = this.formBuilder.group(
