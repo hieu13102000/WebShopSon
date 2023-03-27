@@ -351,8 +351,10 @@
       <div class="category-page-wrapper mb_30">
         <div class="list-grid-wrapper pull-left">
           <div class="btn-group btn-list-grid">
-            <button type="button" id="grid-view" class="btn btn-default grid-view active"></button>
-            <button type="button" id="list-view" class="btn btn-default list-view"></button>
+            <button (click)="toggleGridView(true)" id="grid-view" class="btn btn-default grid-view"
+              [class.active]="isGridView"></button>
+            <button (click)="toggleGridView(false)" type="button" id="list-view" class="btn btn-default list-view"
+              [class.active]="!isGridView"></button>
           </div>
         </div>
         <div class="sort-wrapper pull-right">
@@ -362,12 +364,13 @@
           </div>
         </div>
       </div>
-      <div class="row">
+      <div class="row" #productLayout>
         <div *ngFor="let d of data |orderBy :key : reverse | paginate:
-        { itemsPerPage: 9, currentPage: p }" class="product-layout  product-grid  col-md-4 col-sm-6 col-xs-12 ">
+        { itemsPerPage: 9, currentPage: p }"
+          [ngClass]="!isGridView ? 'product-list' : 'product-grid' + (!isGridView ? '' : ' col-md-4 col-sm-6 col-xs-12')">
           <div class="item">
             <div class="product-thumb clearfix mb_30">
-              <span class="product-item-percent-off">
+              <span [hidden]="!isGridView" class="product-item-percent-off">
                 <span>GIẢM</span>
                 <br>
                 <span>{{d.discount}}</span>
@@ -404,7 +407,7 @@
           </div>
         </div>
       </div>
-      <div class="pagination-nav my-pagination text-center mt_50">
+      <div class="my-pagination text-center mt_50">
         <pagination-controls previousLabel="Trước" nextLabel="Sau" (pageChange)="p = $event" class="float-right">
         </pagination-controls>
       </div>

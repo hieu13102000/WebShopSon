@@ -66,7 +66,7 @@ export class FormProductComponent implements OnInit {
         color: ['', Validators.required],
         made_in: ['', Validators.required],
         brand: ['', Validators.required],
-        img: ['https://firebasestorage.googleapis.com/v0/b/webshop-a5ab0.appspot.com/o/images%2Fadd.png?alt=media&token=2b827392-47de-4ef8-84a8-1a980c6c4870', Validators.required],
+        img: ['https://firebasestorage.googleapis.com/v0/b/webshop-a5ab0.appspot.com/o/add.png?alt=media&token=1cc404b4-4ab2-4bc3-afcd-f3de66dec8f2', Validators.required],
       },
     );
   }

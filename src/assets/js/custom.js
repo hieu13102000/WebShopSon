@@ -51,34 +51,7 @@ $(function () {
             event.target != this && "search-overlay-close" != event.target.className && 32 != event.keyCode || $(this).removeClass("open");
         });
     }
-    /* ===== Grid list active  =====   */
-    function gl_active() {
-        $('.btn-list-grid button').on('click', function () {
-            if ($(this).hasClass('grid-view')) {
-                $('.btn-list-grid button').addClass('active');
-                $('.btn-list-grid button.list-view').removeClass('active');
-            }
-            else if ($(this).hasClass('list-view')) {
-                $('.btn-list-grid button').addClass('active');
-                $('.btn-list-grid button.grid-view').removeClass('active');
-            }
-        });
-    }
-    /* ===== Grid list View  =====   */
-    function gl_view() {
-        // Product List
-        $('#list-view').on('click', function () {
-            $('.product-layout > .clearfix').remove();
-            $('.product-layout').attr('class', 'product-layout product-list col-xs-12');
-            $('#column-left .product-layout').attr('class', 'product-layout mb_20');
-            $('#column-right .product-layout').attr('class', 'product-layout mb_20');
 
-        });
-        // Product Grid
-        $('#grid-view').on('click', function () {
-            $('.product-layout').attr('class', 'product-layout product-grid col-md-4 col-sm-6 col-xs-12');
-        });
-    }
     /* ===== Timer  =====   */
     function makeTimer() {
         var endTime = new Date("August 10, 2018 12:00:00 PDT");
@@ -397,9 +370,7 @@ $(function () {
     /* ===== Event for windows and document =====   */
 
     $(document).ready(function () {
-        gl_active();
-        gl_view();
-        search();
+        // search();
         footerToggle();
         m_popup_select();
         log_reg_tab();
@@ -414,8 +385,6 @@ $(function () {
 
     $(window).resize(function () {
         left_colunm_swetch();
-        gl_active();
-        gl_view();
         search();
         footerToggle();
     });

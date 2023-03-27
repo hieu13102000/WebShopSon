@@ -28,7 +28,6 @@ export class CssJsUserDirective {
       '../../../assets/js/jquery.firstVisitPopup.js',
       '../../../assets/js/custom.js',
       '../../../assets/js/jquery-ui.js',
-      '../../../assets/js/custom2.js',
     ];
     for (let i = 0; i < dynamicScripts.length; i++) {
       const node = document.createElement('script');

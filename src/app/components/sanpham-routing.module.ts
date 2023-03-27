@@ -20,8 +20,8 @@ const routes: Routes = [
     ]
   },
   /* This is a route that will be used when the user navigates to a route that does not exist. */
-  { path: '404-not-found', component: NotFoundComponent },
-  { path: '**', redirectTo: '404-not-found' }
+  // { path: '404-not-found', component: NotFoundComponent },
+  // { path: '**', redirectTo: '404-not-found' }
 ];
 @NgModule({
   imports: [RouterModule.forChild(routes)],

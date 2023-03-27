@@ -1,8 +1,7 @@
 import { ActivatedRoute } from '@angular/router';
-import { Observable } from 'rxjs';
 import { ProductService } from '../../../services/product.service';
-import { Component, OnInit } from '@angular/core';
-import { map, switchMap } from 'rxjs/operators'
+import { Component, ElementRef, OnInit, Renderer2, ViewChild } from '@angular/core';
+import { map } from 'rxjs/operators'
 import { product } from 'src/app/models/product.model';
 import { LoadingService } from 'src/app/core/services/loading.service';
 @Component({
@@ -11,6 +10,9 @@ import { LoadingService } from 'src/app/core/services/loading.service';
   styleUrls: ['./products.component.css'],
 })
 export class ProductsComponent implements OnInit {
+  isGridView = true;
+  @ViewChild('productLayout') productLayout!: ElementRef;
+
   data: product[] = [];
   cat: string = '';
   public _id = '';
@@ -20,7 +22,8 @@ export class ProductsComponent implements OnInit {
 
   constructor(private prod: ProductService,
     private route: ActivatedRoute,
-    private loadingService: LoadingService
+    private loadingService: LoadingService,
+    private renderer: Renderer2
   ) { }
 
   ngOnInit(): void {
@@ -31,6 +34,7 @@ export class ProductsComponent implements OnInit {
       if (catID) {
         this.prod.getAllProduct().subscribe((data: any) => {
           this.data = data.filter((item: product) => {
+            this.loadingService.hide();
             return item.brand === catID
           })
         })
@@ -38,9 +42,9 @@ export class ProductsComponent implements OnInit {
       else {
         this.prod.getAllProduct().subscribe((data: any) => {
           this.data = data
+          this.loadingService.hide();
         })
       }
-      this.loadingService.hide();
     })
   }
   Search() {
@@ -57,5 +61,17 @@ export class ProductsComponent implements OnInit {
   sort(key: string) {
     this.key = key;
     this.reverse = !this.reverse;
+  }
+
+  toggleGridView(isGridView: boolean) {
+    this.isGridView = isGridView;
+
+    if (isGridView) {
+      this.renderer.removeClass(this.productLayout.nativeElement, 'product-list');
+      this.renderer.addClass(this.productLayout.nativeElement, 'product-grid');
+    } else {
+      this.renderer.removeClass(this.productLayout.nativeElement, 'product-grid');
+      this.renderer.addClass(this.productLayout.nativeElement, 'product-list');
+    }
   }
 }
